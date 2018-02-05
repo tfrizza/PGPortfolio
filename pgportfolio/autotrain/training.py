@@ -49,7 +49,7 @@ def train_all(processes=1, device="cpu"):
     train_dir = "train_package"
     if not os.path.exists("./" + train_dir): #if the directory does not exist, creates one
         os.makedirs("./" + train_dir)
-    all_subdir = os.listdir("./" + train_dir)
+    all_subdir = [f for f in os.listdir("./" + train_dir) if not f.startswith('.')]
     all_subdir.sort()
     pool = []
     for dir in all_subdir:

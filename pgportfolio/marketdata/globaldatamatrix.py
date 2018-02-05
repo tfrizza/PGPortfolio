@@ -10,6 +10,7 @@ from pgportfolio.constants import *
 import sqlite3
 from datetime import datetime
 import logging
+import sys
 
 
 class HistoryManager:
@@ -129,6 +130,10 @@ class HistoryManager:
             connection = sqlite3.connect(DATABASE_DIR)
             try:
                 cursor=connection.cursor()
+                cursor1=connection.cursor()
+                db_latest_entry = int(cursor1.execute('SELECT date FROM History ORDER BY date DESC LIMIT 1').fetchone()[0])
+                if int(end) > db_latest_entry:
+                    sys.exit('Database does not extend far enough for specified end date')
                 cursor.execute('SELECT coin,SUM(volume) AS total_volume FROM History WHERE'
                                ' date>=? and date<=? GROUP BY coin'
                                ' ORDER BY total_volume DESC LIMIT ?;',

@@ -196,7 +196,7 @@ class NNAgent:
         """
         return mu
 
-    # the history is a 3d matrix, return a asset vector
+    # the history is a 3d matrix, return an asset vector
     def decide_by_history(self, history, last_w):
         assert isinstance(history, np.ndarray),\
             "the history should be a numpy array, not %s" % type(history)

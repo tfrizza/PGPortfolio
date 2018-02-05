@@ -12,6 +12,9 @@ from pgportfolio.tools.trade import save_test_data
 from pgportfolio.tools.shortcut import execute_backtest
 from pgportfolio.resultprocess import plot
 
+import sys
+#sys.settrace()
+
 
 def build_parser():
     parser = ArgumentParser()

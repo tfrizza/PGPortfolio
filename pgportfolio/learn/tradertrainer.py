@@ -128,9 +128,9 @@ class TraderTrainer:
                 self._agent.save_model(self.save_path)
         self.check_abnormal(v_pv, weights)
 
-    def check_abnormal(self, portfolio_value, weigths):
+    def check_abnormal(self, portfolio_value, weights):
         if portfolio_value == 1.0:
-            logging.info("average portfolio weights {}".format(weigths.mean(axis=0)))
+            logging.info("average portfolio weights {}".format(weights.mean(axis=0)))
 
 
     def next_batch(self):
